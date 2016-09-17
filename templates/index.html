@@ -9,6 +9,7 @@
 <script type="text/javascript">
 $('.time').clockpicker();
 </script>
+<script src="{{ url_for('static', filename='js/shetter_function.js') }}"></script>
 {% endblock %}
 {% block main %}
 <div class="input">
@@ -23,44 +24,23 @@ $('.time').clockpicker();
 
 <div class="input-group clockpicker times">
   <span>
-  <input class="time form-control" type="time" value="00:00"> ~
-  <input class="time form-control" type="time" value="23:59">
+  <input id="start" class="time form-control" type="time" value="00:00"> ~
+  <input id="end" class="time form-control" type="time" value="23:59">
 </span>
 </div>
   <br>
 
-  <input class="place" type="text">
 </div>
 <h3>Shetter</h3>
 <div id="shetter" class="container shetter">
   <table class="table">
     <thead>
       <tr>
-        <th>#</th>
         <th>名前</th>
-        <th>メールアドレス</th>
-        <th>電話番号</th>
+        <th>住所</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>煌木 太郎</td>
-        <td>taro.kirameki@example.com</td>
-        <td>09011112222</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>煌木 次郎</td>
-        <td>jiro.kirameki@example.com</td>
-        <td>09033334444</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>煌木 花子</td>
-        <td>hanako.kirameki@example.com</td>
-        <td>09055556666</td>
-      </tr>
+    <tbody id="p">
     </tbody>
   </table>
 </div>

@@ -14,7 +14,7 @@ def connect_db():
 @app.route('/test')
 def test():
     l=["hello","world"]
-    return str(l)
+    return json.dumps(l)
 
 @app.route('/')
 def index():
@@ -32,18 +32,18 @@ def profile(Id):
     prof["lat"] = data[3]
     prof["lng"] = data[4]
     return render_template('profile.html',prof=prof)
-    
+
 @app.route('/search',methods=["POST"])
 def search():
     data=[]
     date = request.form["date"]
     start_hour = request.form["start_hour"]
     end_hour = request.form["end_hour"]
-    
+
     sql = 'select id from schedules where date = {0} and ({1} <= start_hour and {2} >= end_hour);'.format(date, start_hour, end_hour)
     cur = g.db.execute(sql)
     result_ids = [record[0] for record in cur.fetchall()]
-    
+
     sql = 'select * from profile where id in ('
     place_holder = '?,'*len(result_ids)
     sql = sql + place_holder[:-1] + ')'
@@ -56,7 +56,7 @@ def search():
         prof["lat"] = row[3]
         prof["lng"] = row[4]
         data.append(prof)
-        
+
     return json.dumps(data)
 
 @app.before_request
@@ -69,4 +69,4 @@ def teardown_request(exception):
 
 if "__main__" == __name__:
     app.run()
-                     
+

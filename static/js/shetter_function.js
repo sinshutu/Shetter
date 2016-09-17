@@ -1,41 +1,41 @@
-$(function(){
-    $.ajax({
-	type: 'GET',
-        url: 'http://127.0.0.1:5000/test2',
-	//data:JSON.stringify(data),
-	dataType: 'json',
-	success: function(JSON.parse(data)){
-	    var dataArray = data;
-	    $.each(dataArray, function(i){
-   		$(".nameData").append("<p>" + dataArray[i].a + dataArray[i].b + "</p>");
-	    });
-
-	},
-	error: function() {         // HTTPエラー時
-            alert("Server Error. Pleasy try again later.");
-        },
-    });
+var get_start_hour = function(){
+    d = $("#start").val().split(":")[0];
+    return d;
+}
+var get_end_hour = function(){
+    d = $("#end").val().split(":")[0];
+    return d;
+}
+$(".time").on('change', function(e) {
+    regen();
 });
-
-/*function get_data(id)
-$(function(){
-    $.ajax({
-	type: 'get',
-        url: 'http://127.0.0.1:5000/profiles/${id}',
-	dataType: 'json',
-	data:JSON.stringify(data),
-	success: function(data){
-	    var dataArray = data;
-	    $.each(dataArray, function(i){
-   		$(".nameData").append("<p>" + dataArray[i].id + dataArray[i]. + "</p>");
-		//$(".nameData").append("<p>id: " + dataArray[i].id + "　Name: " + dataArray[i].name + " Address " + dataArray[i].address + " "　　(CV: " + dataArray[i].cv + ")</p>");
-	    });
-
-	}
-	error: function() {         // HTTPエラー時
-            alert("Server Error. Pleasy try again later.");
-        },
+regen = function(){
+    $(function(){
+        get_start_hour(),
+        $.ajax({
+            type: 'POST',
+            url: '/search',
+            dataType: 'json',
+            data: {
+                date: 20,
+                start_hour: get_start_hour(),
+                end_hour: get_end_hour(),
+            },
+            success: function(data){
+                //console.info(data);
+                $("#p").empty();
+                for(p in data){
+                    profile = "<tr>" +
+                        "<td>" + data[p].name + "</td>" +
+                        "<td>" + data[p].address + "</td>" +
+                        "</tr>";
+                    $("#p").append(profile);
+                }
+            },
+            error: function(e) {         // HTTPエラー時
+                console.error(e);
+            },
+        });
     });
-})*/
-
-
+}
+regen();
