@@ -40,7 +40,7 @@ def search():
     start_hour = request.form["start_hour"]
     end_hour = request.form["end_hour"]
 
-    sql = 'select id from schedules where date = {0} and ({1} <= start_hour and {2} >= end_hour);'.format(date, start_hour, end_hour)
+    sql = 'select id from schedules where date = {0} and ({1} >= start_hour and {2} <= end_hour);'.format(date, start_hour, end_hour)
     cur = g.db.execute(sql)
     result_ids = [record[0] for record in cur.fetchall()]
 
