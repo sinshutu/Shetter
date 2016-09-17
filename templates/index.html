@@ -1,23 +1,68 @@
 {% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-clockpicker.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-clockpicker.min.css') }}">
+{% endblock %}
+{% block morescript %}
+<script src="{{ url_for('static', filename='js/bootstrap-clockpicker.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery-clockpicker.min.js') }}"></script>
+<script type="text/javascript">
+$('.time').clockpicker();
+</script>
+{% endblock %}
 {% block main %}
 <div class="input">
-  <input class="date" name="date" value="18" type="radio">
-  <input class="date" name="date" value="19" type="radio">
-  <input class="date" name="date" value="20" type="radio">
-  <input class="date" name="date" value="21" type="radio">
-  <input class="date" name="date" value="22" type="radio">
-
+  <ul>
+    <li class="date">18</li>
+    <li class="date">19</li>
+    <li class="date">20</li>
+    <li class="date">21</li>
+    <li class="date">22</li>
+  </ul>
   <br>
 
-  <input class="time" type="time">
-  <input class="time" type="time">
-
+<div class="input-group clockpicker times">
+  <span>
+  <input class="time form-control" type="time" value="00:00"> ~
+  <input class="time form-control" type="time" value="23:59">
+</span>
+</div>
   <br>
 
   <input class="place" type="text">
 </div>
-<div id="shetter" class="shetter">
-  <ul class="li">田中</ul>
-  <ul class="li">佐藤</ul>
+<h3>Shetter</h3>
+<div id="shetter" class="container shetter">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>名前</th>
+        <th>メールアドレス</th>
+        <th>電話番号</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>煌木 太郎</td>
+        <td>taro.kirameki@example.com</td>
+        <td>09011112222</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>煌木 次郎</td>
+        <td>jiro.kirameki@example.com</td>
+        <td>09033334444</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>煌木 花子</td>
+        <td>hanako.kirameki@example.com</td>
+        <td>09055556666</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
 {% endblock %}
