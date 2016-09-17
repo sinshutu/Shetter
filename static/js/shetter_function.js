@@ -17,7 +17,7 @@ regen = function(){
             url: '/search',
             dataType: 'json',
             data: {
-                date: 20,
+                date: get_date,
                 start_hour: get_start_hour(),
                 end_hour: get_end_hour(),
             },
