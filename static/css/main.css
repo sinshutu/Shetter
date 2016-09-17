@@ -1,0 +1,20 @@
+header {
+  background-color: #29A19C;
+  background-color: red;
+}
+main {
+  text-align: center;
+}
+.date {
+  display: block;
+  width: 20%;
+  height: 30px;
+  float: left;
+}
+.date:last-child {
+  float: fixed;
+}
+
+.time {
+  display: inline;
+}
