@@ -26,7 +26,9 @@ regen = function(){
                 $("#p").empty();
                 for(p in data){
                     profile = "<tr>" +
-                        "<td>" + data[p].name + "</td>" +
+                        "<td>" +
+						"<a href='./profiles/" + data[p].id + "'>"  + data[p].name + "</a> " +
+						"</td>" +
                         "<td>" + data[p].address + "</td>" +
                         "</tr>";
                     $("#p").append(profile);
