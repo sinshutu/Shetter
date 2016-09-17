@@ -19,20 +19,24 @@ def test():
 def test2():
     d={"a":1,"b":"c"}
     return json.dumps(d)
-'''
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 @app.route('/profiles/<int:Id>')
 def profile(Id):
-    data = {}
+    prof = {}
     sql = "select * from profile where id={0}".format(Id)
-    cur = g.db.execute(sql % prefecture)
-    p_dict["id"] = row[0]
-    p_dict["prefecture"] = row[1]
-    p_dict["prefecture_ruby"] = row[2]
-    p_dict["capital"] = row[3]
-    p_dict["capital_ruby"] = row[4]
-    return "hello"
+    cur = g.db.execute(sql)
+    data = cur.fetchone()
+    prof["id"] = data[0]
+    prof["name"] = data[1]
+    prof["address"] = data[2]
+    prof["lat"] = data[3]
+    prof["lng"] = data[4]
+    return json.dumps(data)
     #return render_template('index.html',data=data)
-'''
     
 @app.route('/search')
 def search():
