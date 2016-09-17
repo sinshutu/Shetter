@@ -3,6 +3,7 @@ import json
 from flask import Flask, g, request, render_template
 
 DATABASE = 'shetter.db'
+DEBUG = True
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -14,11 +15,6 @@ def connect_db():
 def test():
     l=["hello","world"]
     return str(l)
-
-@app.route('/test2')
-def test2():
-    d={"a":1,"b":"c"}
-    return json.dumps(d)
 
 @app.route('/')
 def index():
@@ -35,11 +31,12 @@ def profile(Id):
     prof["address"] = data[2]
     prof["lat"] = data[3]
     prof["lng"] = data[4]
-    return json.dumps(data)
-    #return render_template('index.html',data=data)
+    #return json.dumps(data)
+    return render_template('profile.html',prof=prof)
     
 @app.route('/search')
 def search():
+    data=[]
     return "search"
 
 @app.before_request
@@ -52,5 +49,4 @@ def teardown_request(exception):
 
 if "__main__" == __name__:
     app.run()
-
                      

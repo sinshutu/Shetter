@@ -3,7 +3,6 @@ header {
   background-color: red;
 }
 main {
-  margin: auto;
   text-align: center;
 }
 .date {
@@ -14,4 +13,8 @@ main {
 }
 .date:last-child {
   float: fixed;
+}
+
+.time {
+  display: inline;
 }
