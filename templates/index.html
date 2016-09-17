@@ -1,37 +1,23 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Shetter</title>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
-    <link rel="shortcut icon" href="">
-  </head>
-  <body>
-    <div class="input">
-      <input class="date" value="18" type="radio">
-      <input class="date" value="19" type="radio">
-      <input class="date" value="20" type="radio">
-      <input class="date" value="21" type="radio">
-      <input class="date" value="22" type="radio">
+{% extends "base.html" %}
+{% block main %}
+<div class="input">
+  <input class="date" name="date" value="18" type="radio">
+  <input class="date" name="date" value="19" type="radio">
+  <input class="date" name="date" value="20" type="radio">
+  <input class="date" name="date" value="21" type="radio">
+  <input class="date" name="date" value="22" type="radio">
 
-      <br>
+  <br>
 
-      <input class="time" type="time">
-      <input class="time" type="time">
+  <input class="time" type="time">
+  <input class="time" type="time">
 
-      <br>
+  <br>
 
-      <input class="place" type="text">
-    </div>
-    <div id="shetter" class="shetter">
-      <ul class="li">田中</ul>
-      <ul class="li">佐藤</ul>
-    </div>
-    <script src="../static/js/jquery-3.1.0.min.js"></script>
-  </body>
-</html>
-
+  <input class="place" type="text">
+</div>
+<div id="shetter" class="shetter">
+  <ul class="li">田中</ul>
+  <ul class="li">佐藤</ul>
+</div>
+{% endblock %}

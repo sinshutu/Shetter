@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Shetter</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <link rel="shortcut icon" href="">
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body>
+    <div class="header" role="header">
+    </div>
+    <main>
+    {% block main %}
+    {% endblock %}
+    <script src="{{ url_for('static', filename='js/jquery-3.1.0.min.js') }}"></script>
+    {% block morescript %}
+    {% endblock %}
+    </main>
+    <div class="footer" role="contentinfo">
+    </div>
+  </body>
+</html>
+
